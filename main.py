@@ -14,7 +14,7 @@ def classify_text():
     message = request.args.get('message')
     analysis = classificationService.get_sentiment_analysis(message)
     if analysis != None:
-        return analysis.toJson(), 200
+        return analysis.to_json(), 200
     else:
         return {}, 404
 

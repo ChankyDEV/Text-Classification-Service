@@ -10,9 +10,9 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 class OwnClassificationRepository(ClassificationRepository):
 
-    def process(sentence_to_process:str, tokenizer: Tokenizer):
+    def process(self,sentence_to_process:str, tokenizer: Tokenizer):
         tokenized_sentence = tokenizer.texts_to_sequences([sentence_to_process])
-        expanded_sentence = pad_sequences(tokenized_sentence, padding='post', maxlen=286)
+        expanded_sentence = pad_sequences(tokenized_sentence, padding='post', maxlen=307)
         return expanded_sentence
         
     def loadTokenizer(self):
@@ -21,17 +21,17 @@ class OwnClassificationRepository(ClassificationRepository):
         return tokenizer_from_json(data)
     
     
-    def predict(self,message, model, tokenizer):
+    def predict(self, message, model, tokenizer):
         processed = self.process(message, tokenizer)
-        reshaped_sentence = tf.reshape(processed,[1,286])
+        reshaped_sentence = tf.reshape(processed,[1,307])
         prediction = model.predict(reshaped_sentence)
         return prediction[0][0],prediction[0][1]
         
     def get_sentiment_analysis(self, text) -> SentimentAnalysis:
-        try:
-            tokenizer = self.loadTokenizer()
-            model = load_model('G:\Python/text_classification_server/text_classification_model.h5')
-            sad, other = self.predict(text, model, tokenizer)
-            return SentimentAnalysis(sad,other)
-        except:
-            return None
+        # try:
+        tokenizer = self.loadTokenizer()
+        model = load_model('G:\Python/text_classification_server/91percent.h5')
+        sad, other = self.predict(text, model, tokenizer)
+        return SentimentAnalysis(sad,other)
+        # except:
+        #     return None

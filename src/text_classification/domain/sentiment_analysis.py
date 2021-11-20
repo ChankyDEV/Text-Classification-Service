@@ -4,8 +4,8 @@ class SentimentAnalysis():
         self.depression_factor = depression_factor
         self.other_emotion_factor = other_emotion_factor
     
-    def toJson(self):
+    def to_json(self):
         return {
-            "sad": str(self.depression_factor),
-            "other": str(self.other_emotion_factor)
+            "depressed": str(self.depression_factor),
+            "non-depressed": str(self.other_emotion_factor)
         }
