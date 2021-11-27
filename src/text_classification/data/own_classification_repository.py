@@ -25,7 +25,7 @@ class OwnClassificationRepository(ClassificationRepository):
         
     def get_sentiment_analysis(self, text):
         try:
-            sad, other = self.__predict(text)
-            return SentimentAnalysis(sad,other)
+            non_depression, depression = self.__predict(text)
+            return SentimentAnalysis(depression, non_depression)
         except:
             raise  PredictionException()
