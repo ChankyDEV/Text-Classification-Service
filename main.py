@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from flask import request
 from init import Initializer
+from src.text_classification.domain.sentiment_analysis import SentimentAnalysis
 
 app = Flask(__name__)
 api = Api(app)
@@ -14,10 +15,12 @@ classificationService, classificationRepository = initializer.initialize()
 def classify_text():
     message = request.args.get('message')
     analysis = classificationService.get_sentiment_analysis(message)
-    if analysis != None:
+    if type(analysis) == SentimentAnalysis:
         return analysis.to_json(), 200
     else:
-        return {}, 404
+        return {
+            "message": "Something went wrong while trying to classify your message. Please try again later."
+            }, 404
 
 
 if __name__ == '__main__':
