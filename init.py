@@ -3,13 +3,16 @@ from src.text_classification.data.own_classification_repository import OwnClassi
 from src.text_classification.data.own_classification_service import OwnClassificationService
 from keras_preprocessing.text import tokenizer_from_json
 import json
+from src.text_classification.domain.classification_repository import ClassificationRepository
+from src.text_classification.domain.classification_service import ClassificationService
+from typing import Union
 
 class Initializer:
     def __init__(self, model_path, tokenizer_path):
         self.model_path = model_path
         self.tokenizer_path = tokenizer_path
 
-    def initialize(self):
+    def initialize(self) -> Union[ClassificationService, ClassificationRepository]:
         tokenizer = self.__load_tokenizer()
         model = self.__load_model()
         classificationRepository = OwnClassificationRepository(tokenizer=tokenizer, model=model)
