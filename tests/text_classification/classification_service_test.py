@@ -2,14 +2,12 @@ import unittest
 from src.text_classification.data.prediction_exception import PredictionException
 from src.text_classification.data.own_classification_service import OwnClassificationService
 from src.text_classification.data.own_classification_repository import OwnClassificationRepository
+from src.text_classification.domain.sentiment_analysis import SentimentAnalysis
 from unittest.mock import Mock
 from src.text_classification.domain.failure import Failure
 from keras_preprocessing.text import tokenizer_from_json
 from tensorflow.keras.models import load_model
 import json
-
-from src.text_classification.domain.sentiment_analysis import SentimentAnalysis
-
 
 class TestClassificationService(unittest.TestCase):
     
