@@ -7,8 +7,8 @@ from src.text_classification.domain.sentiment_analysis import SentimentAnalysis
 app = Flask(__name__)
 api = Api(app)
 
-initializer = Initializer(model_path = 'G:\Python/text_classification_server/src/text_classification/data/model/model_2021-11-28_best.h5',
-                         tokenizer_path = 'G:\Python/text_classification_server/src/text_classification/data/model/tokenizer.json')
+initializer = Initializer(model_path = './src/text_classification/data/model/model_2021-11-28_best.h5',
+                         tokenizer_path = './src/text_classification/data/model/tokenizer.json')
 classificationService, classificationRepository = initializer.initialize()
 
 @app.route('/text_classification', methods=['POST'])
