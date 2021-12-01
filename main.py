@@ -7,7 +7,7 @@ from src.text_classification.domain.sentiment_analysis import SentimentAnalysis
 app = Flask(__name__)
 api = Api(app)
 
-initializer = Initializer(model_path = 'G:\Python/text_classification_server/src/text_classification/data/model/90_percent_changed_classes.h5',
+initializer = Initializer(model_path = 'G:\Python/text_classification_server/src/text_classification/data/model/model_2021-11-28_best.h5',
                          tokenizer_path = 'G:\Python/text_classification_server/src/text_classification/data/model/tokenizer.json')
 classificationService, classificationRepository = initializer.initialize()
 
@@ -24,4 +24,4 @@ def classify_text():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()
