@@ -21,7 +21,3 @@ def classify_text():
         return {
             "message": "Something went wrong while trying to classify your message. Please try again later."
             }, 404
-
-
-if __name__ == '__main__':
-    app.run()
